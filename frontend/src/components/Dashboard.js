@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import AddCardForm from "./AddCardForm";
 
 class Dashboard extends React.Component{
 
@@ -8,7 +9,8 @@ class Dashboard extends React.Component{
     }
 
     dashboard = () => {
-        return this.props.dashboard.cards.map(card => {
+        const {dashboard} = this.props
+        return dashboard.cards.map(card => {
             return(
                 <Card card={card} />
             );
@@ -16,15 +18,21 @@ class Dashboard extends React.Component{
     }
 
     render(){
+        const {selectedDashboard} = this.state
+        const {dashboard} = this.props
         return(
             <div 
                 className="dashboard-container" 
-                onClick={() => this.setState({selectedDashboard: !this.state.selectedDashboard})}>
-                        <h1 className="dashboard-name">{this.props.dashboard.name}</h1>
-                        {this.state.selectedDashboard
-                            ? <div className="dashboard">{this.dashboard()}</div>
+                onClick={() => this.setState({selectedDashboard: !selectedDashboard})}>
+                        <h1 className="dashboard-name">{dashboard.name}</h1>
+                        {selectedDashboard
+                            ? <div className="dashboard">
+                                    {this.dashboard()}
+                                    <AddCardForm />
+                                </div>
                             : null
                         }
+
             </div>
 
         );

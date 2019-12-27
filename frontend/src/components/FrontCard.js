@@ -1,15 +1,13 @@
 import React from "react";
 
-class FrontCard extends React.Component{
+function FrontCard({card}){
 
-    render(){
-        return(
-            <div className="card-side side-front">
-                <h1 className="card-content">{this.props.card.name}</h1>
-            </div>
+    return(
+        <div className="card card-front">
+            <h1 className="card-content">{card.name}</h1>
+        </div>
 
-        );
-    }
+    );
 
 }
 

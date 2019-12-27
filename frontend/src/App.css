@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-
+  
 body {
     background-color: #ACEDFF;
 }
@@ -40,15 +40,15 @@ nav, header, footer {
     width: 420px;
     perspective: 1000px;
 }
-   
+
 .card-body {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
     transition: all .7s linear;
 }
-   
-.card-side {
+
+.card {
     position: absolute;
     display: flex;
     align-items: center;
@@ -64,17 +64,51 @@ nav, header, footer {
 .card-container:hover .card-body {
     transform: rotateY(180deg);
 }
-   
-.card-container:hover > .card-body > .side-front {
+
+.card-container:hover > .card-body > .card-front {
     opacity: 0;
     visibility: hidden;
     transition: opacity 1s ease-in, visibility .75s linear;
 }
 
-.side-back {
+.card-front {
+    display: flex;
+}
+
+.card-back {
     transform: rotateY(180deg);
 }
 
-.card-side > p {
+.card-content {
     padding: 10%;
+}
+
+.form {
+    justify-self: center;
+    display: flex;
+    height: 420px;
+    width: 420px;
+    color: #39308b;
+    background-color: #fff;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 35px rgba(50,50,93,.1),0 2px 15px rgba(0,0,0,.07);
+}
+
+.form-name {
+    margin-bottom: 10%;
+}
+.form-content {
+    justify-content: space-evenly;
+    padding: 10%;
+}
+
+input, label {
+    padding: 10px;
+    width: 90%;
+}
+
+.add-button {
+    padding: 10px;
+    margin-top: 10%;
+    width: 96%;
 }

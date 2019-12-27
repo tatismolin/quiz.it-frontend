@@ -1,14 +1,12 @@
 import React from "react";
 
-class BackCard extends React.Component{
+function BackCard({card}){
 
-    render(){
-        return(
-            <div className="card-side side-back">
-                <p className="card-content">{this.props.card.content}</p>
-            </div>
-        );
-    }
+    return(
+        <div className="card card-back">
+            <p className="card-content">{card.content}</p>
+        </div>
+    );
 
 }
 
