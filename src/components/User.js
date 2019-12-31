@@ -1,20 +1,20 @@
-import React from "react";
-import Dashboard from "./Dashboard";
+// import React from "react";
+// import Dashboard from "./Dashboard";
 
-function User(props){
+// function User(props){
 
-    const user = props.user.dashboards.map(dashboard => {
-        return(
-            <Dashboard dashboard={dashboard} />
-        );
-    })
+//     const user = props.user.dashboards.map(dashboard => {
+//         return(
+//             <Dashboard dashboard={dashboard} />
+//         );
+//     })
 
-    return(
-        <div className="user">
-            {user}
-        </div>
-    );
+//     return(
+//         <div className="user">
+//             {user}
+//         </div>
+//     );
 
-}
+// }
 
-export default User;
+// export default User;

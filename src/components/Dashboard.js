@@ -12,7 +12,7 @@ class Dashboard extends React.Component{
         const {dashboard} = this.props
         return dashboard.cards.map(card => {
             return(
-                <Card card={card} />
+                <Card key={card.id} card={card} />
             );
         })
     }
@@ -21,18 +21,15 @@ class Dashboard extends React.Component{
         const {selectedDashboard} = this.state
         const {dashboard} = this.props
         return(
-            <div 
-                className="dashboard-container" 
-                onClick={() => this.setState({selectedDashboard: !selectedDashboard})}>
-                        <h1 className="dashboard-name">{dashboard.name}</h1>
-                        {selectedDashboard
-                            ? <div className="dashboard">
-                                    {this.dashboard()}
-                                    <AddCardForm />
-                                </div>
-                            : null
-                        }
-
+            <div className="dashboard-container">
+                <h1 onClick={() => this.setState({selectedDashboard: !selectedDashboard})} className="dashboard-name">{dashboard.name}</h1>
+                {selectedDashboard
+                    ? <div className="dashboard">
+                            {this.dashboard()}
+                            <AddCardForm addCard={this.props.addCard} dashboard_id={dashboard.id} />
+                        </div>
+                    : null
+                }
             </div>
 
         );

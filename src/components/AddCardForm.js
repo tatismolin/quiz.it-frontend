@@ -6,10 +6,11 @@ class AddCardForm extends Component{
         name: " ",
         content: " "
     }
-
+    
     handleSubmit = (event) => {
+        console.log("class", this.props)
         event.preventDefault()
-        this.props.addCard(this.state)
+        this.props.addCard({...this.state, dashboard_id: this.props.dashboard_id})
         this.setState({
             name: " ",
             content: " "

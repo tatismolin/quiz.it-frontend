@@ -1,17 +1,32 @@
 import React from "react";
-import User from "./User";
+import Dashboard from "./Dashboard";
 
 function Home(props){
 
-    const users = props.users.map(user => {
-        return(
-            <User user={user} />
-        );
-    })
+    const sortByName = (a, b) => {
+        if(a.name > b.name){
+            return 1
+        }
+        if(a.name < b.name){
+            return -1
+        }
+        return 0
+    }
 
+    const displayDashboard = () => {
+        return props.user.dashboards.sort(sortByName).map(dashboard => {
+            return(
+               <Dashboard key={dashboard.id} addCard={props.addCard} dashboard={dashboard} />
+            );
+        })
+    }
+    
     return(
         <div className="user">
-            {users}
+            {props.user.dashboards
+                ? displayDashboard()
+                : null
+            }
         </div>
     );
 
