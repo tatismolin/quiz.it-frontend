@@ -28,25 +28,55 @@ class App extends Component {
         ...dashboards, dashboard
       ]
     }))
-    
-    console.log("dashboards", dashboards)
-    console.log("dashboard", dashboard)
+
+    fetch("http://localhost:3000/cards", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify({card})
+    })
+  }
+
+  removeCard = (card) => {
+    const removedCard = card.card_id;
+    fetch(`http://localhost:3000/cards/${removedCard}`, {
+      method: "DELETE"
+    })
+  }
+
+  editCard = (card) => {
+    fetch(`http://[::1]:3000/cards/${card.id}`, {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify({
+          name: "name",
+          content: "content"
+      })
+    });
   }
 
   render(){
     return (
       <div className="app">
         <nav>
-          <div className="button-div">
-            <button>Home</button>
-            <button>LogOut</button>
-          </div>
-          <h1>Quizy</h1>
-          <input className="search-bar" placeholder="Search"></input>
+          <p className="app-name">Quiz.it</p>
+          <input className="search-bar" placeholder="Search..."></input>
         </nav>
-          <Home addCard={this.addCard} user={this.state.user} />
+
+        <Home 
+          user={this.state.user} 
+          addCard={this.addCard} 
+          removeCard={this.removeCard} 
+          editCard={this.editCard} 
+        />
+
         <footer>
-          <h1>Created by Me</h1>
+          <p className="footer-name">Created by Me</p>
         </footer>
       </div>
     );

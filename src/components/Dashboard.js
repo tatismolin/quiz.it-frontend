@@ -12,26 +12,37 @@ class Dashboard extends React.Component{
         const {dashboard} = this.props
         return dashboard.cards.map(card => {
             return(
-                <Card key={card.id} card={card} />
+                <Card 
+                    card_id={card.id} 
+                    card={card} 
+                    removeCard={this.props.removeCard} 
+                    editCard={this.props.editCard} 
+                />
             );
         })
     }
 
     render(){
-        const {selectedDashboard} = this.state
-        const {dashboard} = this.props
+        const {selectedDashboard} = this.state;
+        const {dashboard} = this.props;
         return(
             <div className="dashboard-container">
-                <h1 onClick={() => this.setState({selectedDashboard: !selectedDashboard})} className="dashboard-name">{dashboard.name}</h1>
+                <p 
+                    onClick={() => this.setState({selectedDashboard: !selectedDashboard})} 
+                    className="dashboard-name">{dashboard.name}
+                </p>
+
                 {selectedDashboard
                     ? <div className="dashboard">
                             {this.dashboard()}
-                            <AddCardForm addCard={this.props.addCard} dashboard_id={dashboard.id} />
+                            <AddCardForm 
+                                addCard={this.props.addCard} 
+                                dashboard_id={dashboard.id} 
+                            />
                         </div>
                     : null
                 }
             </div>
-
         );
     }
 

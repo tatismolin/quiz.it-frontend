@@ -1,166 +1,164 @@
+
+@font-face {
+    font-family: 'LCD Solid';
+    src: local('LCD Solid'), url(./LcdSolid-VPzB.ttf);
+}
+
+@font-face {
+    font-family: 'WestEnglandRegular';
+    src: local('WestEnglandRegular'), url(./WestEnglandRegular-24Y3.ttf);
+  }
+
+@font-face {
+    font-family: 'MadeWithPaintRegular';
+    src: local('MadeWithPaintRegular'), url(./MadeWithPaintRegular-Z82J.ttf);
+  }
+
 * {
     margin: 0;
     padding: 0;
 }
+
+html {
+    size: 100%;
+}
   
 body {
-    background-color: #DBB3B1;
+    background-color: #35FF69;
 }
 
-nav, header, footer {
+.app {
+    padding: 1rem;
+}
+
+nav, footer {
     width: 100%;
-    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "LCD Solid";
+    font-weight: 600;
+    color: #494947;
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: #C89FA3;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
 }
 
-.search-bar {
-    width: 10%;
-    height: 10px;
-}
-
-nav > h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #2C1A1D;
-    font-size: 54px;
-    font-weight: 200;
-}
-
-footer > h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #2C1A1D;
-    font-size: 16px;
-    font-weight: 200;
-    text-align: center;
+.app-name {
+    font-size: 48px;
+    padding-bottom: 1rem;;
 }
 
 footer {
-    margin-top: 100px;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
 }
 
-.user {
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+.footer-name {
+    font-size: 14px;
 }
 
 .dashboard-name {
-    margin: 2%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #2C1A1D;
-    font-size: 46px;
-    font-weight: 400;
-    width: 10%;
+    font-family: "LCD Solid";
+    font-size: 40px;
+    font-weight: 300;
+    color: #494947;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.dashboard-container {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
 }
 
 .dashboard {
     display: grid;
-    justify-content: space-evenly;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    margin: 2%;
-    grid-gap: 40px;
-}
-
-.card-container {
-    justify-self: center;
-    height: 420px;
-    width: 420px;
-    perspective: 1000px;
-}
-
-.card-body {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: all .7s linear;
-}
-
-.card {
-    position: absolute;
-    display: flex;
-    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 0fr));
+    grid-gap: 0.5rem;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    color: #2C1A1D;
-    background-color: #C89FA3;
-    backface-visibility: hidden;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    box-shadow: 0 10px 35px rgba(50,50,93,.1),0 2px 15px rgba(0,0,0,.07);
+    font-family: "WestEnglandRegular";
+    color: white;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    margin: 1rem;
 }
 
-.card-container:hover .card-body {
-    transform: rotateY(180deg);
+.dashboard-container:hover {
+    background-color: #35FF69;
 }
 
-.card-container:hover > .card-body > .card-front {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease-in, visibility .75s linear;
-}
-
-.card-front {
-    font-size: 12px;
-    display: flex;
+.card-front > p {
+    text-align: center;
+    font-size: 16px;
+    padding: 1rem;
 }
 
 .card-back {
-    font-size: 20px;
-    transform: rotateY(180deg);
+    font-size: 14px;
+    padding: 1rem;
 }
 
-.card-content {
-    display: flex;
-    text-align: center;    
-    padding: 10%;
+.card-buttons {
+    padding-bottom: 1rem;
 }
 
-.card-back > .card-content {
-    text-align: left;    
-    padding: 10%;
-}
-
-.heart {
+.delete-button {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
-}
+} 
+
+.edit-button {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+} 
 
 .form {
-    justify-self: center;
     display: flex;
-    height: 420px;
-    width: 420px;
-    color: #364156;
-    background-color: #A67F8E;
-    backface-visibility: hidden;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 100;
-    box-shadow: 0 10px 35px rgba(50,50,93,.1),0 2px 15px rgba(0,0,0,.07);
+    width: 15rem;
+    height: 15rem;
+    justify-self: center;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 2rem;
+    font-family: "WestEnglandRegular";
+    font-size: 16px;
+    color: #494947;
 }
 
 .form-name {
-    margin-bottom: 10%;
-}
-.form-content {
-    justify-content: space-evenly;
-    padding: 10%;
+    font-family: "LCD Solid";
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;;
+    padding-bottom: 1rem;
 }
 
-input, label {
-    padding: 10px;
-    width: 90%;
+label {
+    font-size: 12px;
+    padding-top: 0.2rem;
+}
+
+input {
+    padding: 5px;
 }
 
 .add-button {
     padding: 10px;
-    margin-top: 10%;
-    width: 96%;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: rgb(236, 236, 236);
 }

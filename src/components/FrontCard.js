@@ -6,7 +6,7 @@ function FrontCard({card}){
         <div className="card card-front">
             <h1 className="card-content">
                 {card.name}</h1>
-            <span role="img" aria-label="heart" className="heart">❤️</span>
+            <span role="img" aria-label="heart" className="close-button">✖️</span>
         </div>
 
     );

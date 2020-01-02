@@ -8,29 +8,28 @@ class AddCardForm extends Component{
     }
     
     handleSubmit = (event) => {
-        console.log("class", this.props)
-        event.preventDefault()
+        event.preventDefault();
         this.props.addCard({...this.state, dashboard_id: this.props.dashboard_id})
         this.setState({
             name: " ",
             content: " "
         })
-        event.target.reset()
+        event.target.reset();
     }
 
     handleChange = (event) => {
-        const {name, value} = event.target
+        const {name, value} = event.target;
         this.setState({
             [name]: value 
         })
     }
 
     render(){
-        const {name, content} = this.state
+        const {name, content} = this.state;
         return(
             <form className="form" onSubmit={this.handleSubmit}>
                 <div className="form-content">
-                    <h1 className="form-name">Add a new Card</h1>
+                    <p className="form-name">Add a new Card</p>
                     <label>Name</label>
                     <input 
                         type="text"

@@ -16,7 +16,13 @@ function Home(props){
     const displayDashboard = () => {
         return props.user.dashboards.sort(sortByName).map(dashboard => {
             return(
-               <Dashboard key={dashboard.id} addCard={props.addCard} dashboard={dashboard} />
+               <Dashboard 
+                    key={dashboard.id} 
+                    dashboard={dashboard} 
+                    addCard={props.addCard} 
+                    removeCard={props.removeCard} 
+                    editCard={props.editCard}
+                />
             );
         })
     }
