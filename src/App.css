@@ -68,6 +68,8 @@ footer {
     color: #494947;
     padding-top: 2rem;
     padding-left: 2rem;
+    cursor: pointer;
+    width: 40%;
 }
 
 .dashboard-container {
@@ -90,6 +92,12 @@ footer {
     background-color: #35FF69;
 }
 
+.flippy-card {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
 .card-front > p {
     text-align: center;
     font-size: 16px;
@@ -102,19 +110,22 @@ footer {
 }
 
 .card-buttons {
-    padding-bottom: 1rem;
+    padding-bottom: 1rem;   
 }
 
 .delete-button {
     position: absolute;
+    z-index: 1000;
     top: 10px;
     right: 10px;
+    cursor: pointer;
 } 
 
 .edit-button {
     position: absolute;
     top: 10px;
     right: 40px;
+    cursor: pointer;
 } 
 
 .form {

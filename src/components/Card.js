@@ -1,15 +1,15 @@
 import React, {Component} from "react";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
+import Flippy, {FrontSide, BackSide} from "react-flippy";
 
 class Card extends Component{
 
-    handleClick = (event) => {
-        this.props.removeCard({card_id: this.props.card_id})
-    }
+    handleDelete = (event) => {
+        this.props.removeCard({card_id: this.props.card_id});
+    };
 
     handleChange = (event) => {
-        this.props.editCard({card_id: this.props.card_id})
-    }
+        this.props.editCard({card_id: this.props.card_id});
+    };
 
     render() {
         return(
@@ -32,22 +32,40 @@ class Card extends Component{
                         backgroundColor: "#475B5A", 
                         boxShadow: "0 4px 8px 0 rgba(0,0,0,.2)"
                     }}>
-                    <div className="card-buttons">
-                        <span className="delete-button" onClick={this.handleClick}role="img" aria-label="delete button">❌</span>
-                        <span className="edit-button" onClick={this.handleChange}role="img" aria-label="edit button">✏️</span>
-                    </div>
-                    <p>{this.props.card.name}</p>
+
+                        <p>{this.props.card.name}</p>
                 </FrontSide>
 
                 <BackSide
                     className="card-back"
-                    style={{backgroundColor: "#494947"}}>
+                    style={{
+                        backgroundColor: "white",
+                        color: "#494947",
+                        boxShadow: "0 4px 8px 0 rgba(0,0,0,.2)"
+
+                    }}>
+                        <div className="card-buttons">
+                            <span 
+                                className="delete-button" 
+                                onClick={this.handleDelete} 
+                                role="img" 
+                                aria-label="delete button">
+                                    ❌
+                            </span>
+                            <span 
+                                className="edit-button" 
+                                onClick={this.handleChange} 
+                                role="img" 
+                                aria-label="edit button">
+                                    ✏️
+                            </span>
+                        </div>
 
                     {this.props.card.content}
                 </BackSide>
             </Flippy>
         );
-    }
+    };
 
 }
 

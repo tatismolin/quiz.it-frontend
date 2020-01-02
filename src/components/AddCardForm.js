@@ -5,24 +5,24 @@ class AddCardForm extends Component{
     state = {
         name: " ",
         content: " "
-    }
+    };
     
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addCard({...this.state, dashboard_id: this.props.dashboard_id})
+        this.props.addCard({...this.state, dashboard_id: this.props.dashboard_id});
         this.setState({
             name: " ",
             content: " "
-        })
+        });
         event.target.reset();
-    }
+    };
 
     handleChange = (event) => {
         const {name, value} = event.target;
         this.setState({
             [name]: value 
-        })
-    }
+        });
+    };
 
     render(){
         const {name, content} = this.state;
@@ -50,7 +50,7 @@ class AddCardForm extends Component{
                 </div>
             </form>
         );
-    }
+    };
 
 }
 
