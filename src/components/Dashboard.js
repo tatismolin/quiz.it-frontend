@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Card from "./Card";
 import AddCardForm from "./AddCardForm";
-import Search from "./Search";
 
 class Dashboard extends Component{
 
@@ -11,28 +10,33 @@ class Dashboard extends Component{
     };
 
     componentDidMount(){
+        const {cards} = this.props.dashboard;
         this.setState({
-            cards: this.props.dashboard.cards
+            cards: cards
         });
     };
 
     dashboard = () => {
-        return this.state.cards.map(card => {
+        const {cards} = this.state;
+        return cards.map(card => {
             return(
                 <Card 
                     card_id={card.id} 
                     card={card} 
                     removeCard={this.removeCard} 
-                    editCard={this.editCard} 
+                    // editCard={this.editCard} 
+                    // dashboard_id={dashboard.id} 
                 />
             );
         });
     };
 
     addCard = (card) => {
+        const {cards} = this.state;
         this.setState({
-            cards: [...this.state.cards, card]
+            cards: [...cards, card]
         });
+        
         fetch("http://localhost:3000/cards", {
           method: "POST",
           headers: {
@@ -41,47 +45,36 @@ class Dashboard extends Component{
           },
           body: JSON.stringify({card})
         });
-        // .then(response => response.json())
-        // .then(card => {
-        //     const index = this.state.cards.length-1
-        //     const newArray = this.state.cards.slice(index)
-        //     this.setState({
-        //         cards: [...newArray, card]
-        //     })
-        // })
     };
 
     removeCard = (deletedCard) => {
-        const newCardsState = this.state.cards.filter(card => {
+        const {cards} = this.state;
+        const newCardsState = cards.filter(card => {
             return(
                 card.id !== deletedCard.card_id
             );
         });
         this.setState({cards: newCardsState});
+
         fetch(`http://localhost:3000/cards/${deletedCard.card_id}`, {
           method: "DELETE"
         });
     };
 
-    // editCard = (updatedCard) => {
-    //     const newCardsState = this.state.cards.map(card => {
-    //         return card.id === updatedCard.card_id
-    //             ? updatedCard
-    //             : card
-    //     })
-    //     this.setState({cards: newCardsState});
+    // editCard = (card) => {
+    //     this.setState({
+    //         cards: [...this.state.cards, card]
+    //     });
+
     //     fetch(`http://[::1]:3000/cards/${card.id}`, {
     //         method: "PATCH",
     //         headers: {
     //             "Content-Type": "application/json",
     //             "Accept": "application/json"
     //         },
-    //         body: JSON.stringify({
-    //             name: "name",
-    //             content: "content"
-    //         })
+    //         body: JSON.stringify({card})
     //     });
-    // }
+    // };
 
     render(){
         const {selectedDashboard} = this.state;
@@ -96,6 +89,7 @@ class Dashboard extends Component{
                 {selectedDashboard
                     ? <div className="dashboard">
                             {this.dashboard()}
+
                             <AddCardForm 
                                 addCard={this.addCard} 
                                 dashboard_id={dashboard.id} 

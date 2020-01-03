@@ -1,16 +1,15 @@
 import "./App.css";
-
 import React, {Component} from "react";
 import Home from "./components/Home";
 import Search from "./components/Search";
-
+import SearchedCards from "./components/SearchedCards";
 
 class App extends Component{
 
   state = {
     user: {},
     dashboards: [],
-    searchTerm: " ",
+    searchTerm: "",
     cards: []
   };
 
@@ -34,33 +33,38 @@ class App extends Component{
   };
 
   filteredCards = () => {
-      return(this.state.cards.filter(card => {
+    const {cards, searchTerm} = this.state;
+      return(cards.filter(card => {
         return(card.name
           .toLowerCase()
-          .includes(this.state.searchTerm)
+          .includes(searchTerm.toLowerCase())
         ) || (card.content
           .toLowerCase()
-          .includes(this.state.searchTerm)
+          .includes(searchTerm.toLowerCase())
           )
       }));
   };
 
   render(){
+    const {searchTerm, user, dashboards} = this.state;
     return (
       <div className="app">
         <nav>
           <p className="app-name">Quiz.it</p>
           <Search
-            searchTerm={this.state.searchTerm}
-            updateSearchTerm={this.updateSearchTerm}
+            searchTerm={searchTerm}
             updateSearchTerm={this.updateSearchTerm}
           />
         </nav>
 
+        <SearchedCards 
+          filteredCards={this.filteredCards()} 
+          searchTerm={searchTerm}
+          />
+
         <Home 
-          user={this.state.user} 
-          dashboards={this.state.dashboards}
-          filteredCards={this.filteredCards()}
+          user={user} 
+          dashboards={dashboards}
         />
 
         <footer>

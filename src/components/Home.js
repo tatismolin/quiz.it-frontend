@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
 
-function Home(props){
+function Home({dashboards}){
 
     const sortByName = (a, b) => {
         if(a.name > b.name){
@@ -14,7 +14,7 @@ function Home(props){
     };
 
     const displayDashboard = () => {
-        return props.dashboards.sort(sortByName).map(dashboard => {
+        return dashboards.sort(sortByName).map(dashboard => {
             return(
                <Dashboard 
                     key={dashboard.id} 
@@ -26,7 +26,7 @@ function Home(props){
     
     return(
         <div className="user">
-            {props.dashboards
+            {dashboards
                 ? displayDashboard()
                 : null
             }
