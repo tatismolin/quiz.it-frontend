@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Quiz.it
 
-## Available Scripts
+**Tech database for interview preparations.**
 
-In the project directory, you can run:
 
-### `yarn start`
+Quiz.it is a tech knowledge data base. It has flipping cards organized by dashboards. Each dashboard represents a tech topic, for example, JavaScript, Ruby, Networking, SQL, etc. Each card has a front and back sides. Front side is a tech question, for example, "What is Enumerable?". Back side has an answer to this question. Clicking on the card flips it over and displays the back side - the answer. Quiz.it was created using responsive design in order to be used on a mobile phone browser. Written in JavaScript/React on frontend and Ruby on Rails on a backend.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![background](./src/pictures/quizit_gif.gif)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+**Demo:** [YouTube]()
 
-### `yarn test`
+**Stack:**
+> - Ruby on Rails;
+> - JavaScript;
+> - React;
+> - HTML/CSS.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**How to run instructions:**
+1. Fork and clone this Project's GitHub repository.  
+2. Have current version of Ruby, Rails and Node installed.
+3. Open a terminal and navigate into the backend folder:
+* _Install required gems (listed in Gemfile) by running the command 'bundle install';_
+* _Run the command 'rails db:create' which will create the database;_
+* _Run the command 'rails db:migrate' which will do DB migrations;_
+* _Run the command 'rails db:seed' which will populate the database with existing user/plan/lists/tasks data;_
+* _Run the command 'rails s' to start backend server;_
+4. Open a separate terminal window/tab and navigate into the frontend folder:
+* _Run the command 'npm install' to install dependencies into the node_modules/ directory;_
+* _Run the command 'npm start' to start frontend server._
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Future features:**
+- [ ] login functionality;
+- [ ] signup functionality;
+- [ ] ability to create new dashboards;
+- [x] search functionality.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Quiz.it uses data provided by Flatiron instructors and was created for educational purposes only.**
+**Created by Tatiana Smolin as part of a MOD4 Solo Project at Flatiron School.**
