@@ -7,7 +7,7 @@ Quiz.it is a tech knowledge data base. It has flipping cards organized by dashbo
 
 ![background](./src/pictures/quizit_gif.gif)
 
-**Demo:** [YouTube]()
+**Demo:** [YouTube](https://www.youtube.com/watch?v=V4qpqCHhSck)
 
 **Stack:**
 > - Ruby on Rails;
