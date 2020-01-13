@@ -14,7 +14,7 @@ class Card extends Component{
     //     editCard({card_id: card_id});
     // };
     
-    render() {
+    render(){
         const {name, content} = this.props.card;
         return(
             <Flippy

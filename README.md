@@ -5,7 +5,7 @@
 
 Quiz.it is a tech knowledge data base. It has flipping cards organized by dashboards. Each dashboard represents a tech topic, for example, JavaScript, Ruby, Networking, SQL, etc. Each card has a front and back sides. Front side is a tech question, for example, "What is Enumerable?". Back side has an answer to this question. Clicking on the card flips it over and displays the back side - the answer. Quiz.it was created using responsive design in order to be used on a mobile phone browser. Written in JavaScript/React on frontend and Ruby on Rails on a backend.
 
-![background](./src/pictures/quizit_gif.gif)
+![background](./pictures/quizit_gif.gif)
 
 **Demo:** [YouTube]()
 

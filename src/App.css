@@ -1,17 +1,16 @@
-
 @font-face {
     font-family: "LCD Solid";
-    src: local("LCD Solid"), url(./LcdSolid-VPzB.ttf);
+    src: local("LCD Solid"), url(./fonts/LcdSolid-VPzB.ttf);
 }
 
 @font-face {
     font-family: "WestEnglandRegular";
-    src: local("WestEnglandRegular"), url(./WestEnglandRegular-24Y3.ttf);
+    src: local("WestEnglandRegular"), url(./fonts/WestEnglandRegular-24Y3.ttf);
   }
 
 @font-face {
     font-family: "MadeWithPaintRegular";
-    src: local("MadeWithPaintRegular"), url(./MadeWithPaintRegular-Z82J.ttf);
+    src: local("MadeWithPaintRegular"), url(./fonts/MadeWithPaintRegular-Z82J.ttf);
   }
 
 * {
