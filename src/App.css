@@ -1,17 +1,17 @@
 
 @font-face {
-    font-family: 'LCD Solid';
-    src: local('LCD Solid'), url(./LcdSolid-VPzB.ttf);
+    font-family: "LCD Solid";
+    src: local("LCD Solid"), url(./LcdSolid-VPzB.ttf);
 }
 
 @font-face {
-    font-family: 'WestEnglandRegular';
-    src: local('WestEnglandRegular'), url(./WestEnglandRegular-24Y3.ttf);
+    font-family: "WestEnglandRegular";
+    src: local("WestEnglandRegular"), url(./WestEnglandRegular-24Y3.ttf);
   }
 
 @font-face {
-    font-family: 'MadeWithPaintRegular';
-    src: local('MadeWithPaintRegular'), url(./MadeWithPaintRegular-Z82J.ttf);
+    font-family: "MadeWithPaintRegular";
+    src: local("MadeWithPaintRegular"), url(./MadeWithPaintRegular-Z82J.ttf);
   }
 
 * {
@@ -31,7 +31,7 @@ body {
     padding: 1rem;
 }
 
-nav, footer {
+nav {    
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -40,9 +40,7 @@ nav, footer {
     font-family: "LCD Solid";
     font-weight: 600;
     color: #494947;
-}
 
-nav {
     margin-top: 1rem;
     margin-bottom: 3rem;
 }
@@ -53,12 +51,32 @@ nav {
 }
 
 footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "LCD Solid";
+    font-weight: 600;
+    color: #494947;
+
     margin-top: 5rem;
     margin-bottom: 1rem;
 }
 
 .footer-name {
     font-size: 14px;
+}
+
+.found-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 0fr));
+    grid-gap: 0.5rem;
+    justify-content: center;
+    font-family: "WestEnglandRegular";
+    color: white;
+    padding: 1rem;
+    margin: 1rem;
 }
 
 .dashboard-name {
@@ -68,10 +86,16 @@ footer {
     color: #494947;
     padding-top: 2rem;
     padding-left: 2rem;
+    word-wrap: break-word;
+    cursor: pointer;
 }
 
 .dashboard-container {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.dashboard-container:hover {
+    background-color: #35FF69;
 }
 
 .dashboard {
@@ -86,8 +110,10 @@ footer {
     margin: 1rem;
 }
 
-.dashboard-container:hover {
-    background-color: #35FF69;
+.flippy-card {
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 .card-front > p {
@@ -96,44 +122,43 @@ footer {
     padding: 1rem;
 }
 
-.card-back {
+.card-back > p {
     font-size: 14px;
     padding: 1rem;
+    word-wrap: initial;
+}
+
+.back-content {
+    width: 90%;
+    height: 10rem;
 }
 
 .card-buttons {
-    padding-bottom: 1rem;
+    padding-bottom: 1rem;   
 }
 
-.delete-button {
+.delete-emoji {
     position: absolute;
     top: 10px;
     right: 10px;
+    z-index: 1000;
+    cursor: pointer;
 } 
 
-.edit-button {
+.edit-emoji {
     position: absolute;
     top: 10px;
     right: 40px;
+    cursor: pointer;
 } 
 
-.form {
-    display: flex;
+.add-form, .edit-form {
     width: 15rem;
     height: 15rem;
+    display: flex;
     justify-self: center;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
-}
-
-.form-content {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    padding: 2rem;
-    font-family: "WestEnglandRegular";
-    font-size: 16px;
-    color: #494947;
 }
 
 .form-name {
@@ -142,6 +167,16 @@ footer {
     font-size: 20px;
     font-weight: 700;;
     padding-bottom: 1rem;
+}
+
+.add-form-content, .edit-form-content {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    font-family: "WestEnglandRegular";
+    font-size: 16px;
+    color: #494947;
+    padding: 2rem;
 }
 
 label {
@@ -153,12 +188,13 @@ input {
     padding: 5px;
 }
 
-.add-button {
+.add-button, .edit-button {
     padding: 10px;
     margin-top: 1rem;
     cursor: pointer;
 }
 
-.add-button:hover {
+.add-button:hover, .edit-button:hover {
     background-color: rgb(236, 236, 236);
 }
+

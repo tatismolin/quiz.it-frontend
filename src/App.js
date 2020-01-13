@@ -1,86 +1,78 @@
 import "./App.css";
-
 import React, {Component} from "react";
 import Home from "./components/Home";
+import Search from "./components/Search";
+import SearchedCards from "./components/SearchedCards";
 
-class App extends Component {
+class App extends Component{
 
   state = {
-    user: {}
-  }
+    user: {},
+    dashboards: [],
+    searchTerm: "",
+    cards: []
+  };
 
   componentDidMount(){
     fetch("http://[::1]:3000/users")
       .then(response => response.json())
-      .then(user => this.setState({
-        user: user[0]
-      }))
-  }
-  
-  addCard = (card) => {
-    const dashboards = this.state.user.dashboards.filter(dashboard => dashboard.id !== card.dashboard_id);
-    const dashboard = this.state.user.dashboards.find(dashboard => dashboard.id === card.dashboard_id);
-    dashboard.cards.push(card);
+      .then(user => {
+        const cards = user[0].dashboards.map(dashboard => {
+          return dashboard.cards;
+        });
+        this.setState({
+          user: user[0],
+          dashboards: user[0].dashboards,
+          cards: cards.flat()
+        });
+      });
+  };
 
-    this.setState(prevState => ({
-      ...prevState,
-      dashboards: [
-        ...dashboards, dashboard
-      ]
-    }))
+  updateSearchTerm = (searchTerm) => {
+    this.setState({searchTerm});
+  };
 
-    fetch("http://localhost:3000/cards", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-      },
-      body: JSON.stringify({card})
-    })
-  }
-
-  removeCard = (card) => {
-    const removedCard = card.card_id;
-    fetch(`http://localhost:3000/cards/${removedCard}`, {
-      method: "DELETE"
-    })
-  }
-
-  editCard = (card) => {
-    fetch(`http://[::1]:3000/cards/${card.id}`, {
-      method: "PATCH",
-      headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-      },
-      body: JSON.stringify({
-          name: "name",
-          content: "content"
-      })
-    });
-  }
+  filteredCards = () => {
+    const {cards, searchTerm} = this.state;
+      return(cards.filter(card => {
+        return(card.name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+        ) || (card.content
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+          )
+      }));
+  };
 
   render(){
+    const {searchTerm, user, dashboards} = this.state;
     return (
       <div className="app">
         <nav>
           <p className="app-name">Quiz.it</p>
-          <input className="search-bar" placeholder="Search..."></input>
+          <Search
+            searchTerm={searchTerm}
+            updateSearchTerm={this.updateSearchTerm}
+          />
         </nav>
 
+        <SearchedCards 
+          filteredCards={this.filteredCards()} 
+          searchTerm={searchTerm}
+          />
+
         <Home 
-          user={this.state.user} 
-          addCard={this.addCard} 
-          removeCard={this.removeCard} 
-          editCard={this.editCard} 
+          user={user} 
+          dashboards={dashboards}
         />
 
         <footer>
-          <p className="footer-name">Created by Me</p>
+          <p className="footer-name">Created with 💚 by Me</p>
         </footer>
       </div>
     );
-  }
+  };
 
 }
 

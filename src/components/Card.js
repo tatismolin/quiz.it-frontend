@@ -1,17 +1,21 @@
 import React, {Component} from "react";
-import Flippy, { FrontSide, BackSide } from "react-flippy";
+import Flippy, {FrontSide, BackSide} from "react-flippy";
+// import EditCardForm from "./EditCardForm";
 
 class Card extends Component{
 
-    handleClick = (event) => {
-        this.props.removeCard({card_id: this.props.card_id})
-    }
+    handleDelete = (event) => {
+        const {removeCard, card_id} = this.props;
+        removeCard({card_id: card_id});
+    };
 
-    handleChange = (event) => {
-        this.props.editCard({card_id: this.props.card_id})
-    }
-
+    // handleEdit = (event) => {
+    //     const {editCard, card_id} = this.props;
+    //     editCard({card_id: card_id});
+    // };
+    
     render() {
+        const {name, content} = this.props.card;
         return(
             <Flippy
                 flipOnHover={false} 
@@ -32,22 +36,48 @@ class Card extends Component{
                         backgroundColor: "#475B5A", 
                         boxShadow: "0 4px 8px 0 rgba(0,0,0,.2)"
                     }}>
-                    <div className="card-buttons">
-                        <span className="delete-button" onClick={this.handleClick}role="img" aria-label="delete button">❌</span>
-                        <span className="edit-button" onClick={this.handleChange}role="img" aria-label="edit button">✏️</span>
-                    </div>
-                    <p>{this.props.card.name}</p>
+
+                        <p>{name}</p>
                 </FrontSide>
 
                 <BackSide
                     className="card-back"
-                    style={{backgroundColor: "#494947"}}>
+                    style={{
+                        backgroundColor: "white",
+                        color: "#494947",
+                        boxShadow: "0 4px 8px 0 rgba(0,0,0,.2)"
+                    }}>
+                        <div className="card-buttons">
+                            <span 
+                                className="delete-emoji" 
+                                onClick={this.handleDelete} 
+                                role="img" 
+                                aria-label="delete button">
 
-                    {this.props.card.content}
+                                    ❌
+                            </span>
+
+                            {/* <span 
+                                className="edit-emoji" 
+                                // onClick={this.handleEdit}
+                                role="img" 
+                                aria-label="edit button">
+
+                                    ✏️
+                            </span> */}
+                        </div>
+                        <div className="back-content" style={{overflow: "scroll"}}>
+                            <p>{content}</p>
+                        </div>
                 </BackSide>
+
+                {/* <EditCardForm 
+                    editCard={this.props.editCard} 
+                    dashboard_id={this.props.dashboard.id} 
+                />  */}
             </Flippy>
         );
-    }
+    };
 
 }
 

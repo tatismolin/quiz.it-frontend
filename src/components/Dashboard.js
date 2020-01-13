@@ -1,26 +1,80 @@
-import React from "react";
+import React, {Component} from "react";
 import Card from "./Card";
 import AddCardForm from "./AddCardForm";
 
-class Dashboard extends React.Component{
+class Dashboard extends Component{
 
     state = {
-        selectedDashboard: null
-    }
+        selectedDashboard: null,
+        cards: []
+    };
+
+    componentDidMount(){
+        const {cards} = this.props.dashboard;
+        this.setState({
+            cards: cards
+        });
+    };
 
     dashboard = () => {
-        const {dashboard} = this.props
-        return dashboard.cards.map(card => {
+        const {cards} = this.state;
+        return cards.map(card => {
             return(
                 <Card 
                     card_id={card.id} 
                     card={card} 
-                    removeCard={this.props.removeCard} 
-                    editCard={this.props.editCard} 
+                    removeCard={this.removeCard} 
+                    // editCard={this.editCard} 
+                    // dashboard_id={dashboard.id} 
                 />
             );
-        })
-    }
+        });
+    };
+
+    addCard = (card) => {
+        const {cards} = this.state;
+        this.setState({
+            cards: [...cards, card]
+        });
+        
+        fetch("http://localhost:3000/cards", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify({card})
+        });
+    };
+
+    removeCard = (deletedCard) => {
+        const {cards} = this.state;
+        const newCardsState = cards.filter(card => {
+            return(
+                card.id !== deletedCard.card_id
+            );
+        });
+        this.setState({cards: newCardsState});
+
+        fetch(`http://localhost:3000/cards/${deletedCard.card_id}`, {
+          method: "DELETE"
+        });
+    };
+
+    // editCard = (card) => {
+    //     this.setState({
+    //         cards: [...this.state.cards, card]
+    //     });
+
+    //     fetch(`http://[::1]:3000/cards/${card.id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Accept": "application/json"
+    //         },
+    //         body: JSON.stringify({card})
+    //     });
+    // };
 
     render(){
         const {selectedDashboard} = this.state;
@@ -35,8 +89,9 @@ class Dashboard extends React.Component{
                 {selectedDashboard
                     ? <div className="dashboard">
                             {this.dashboard()}
+
                             <AddCardForm 
-                                addCard={this.props.addCard} 
+                                addCard={this.addCard} 
                                 dashboard_id={dashboard.id} 
                             />
                         </div>
@@ -44,7 +99,7 @@ class Dashboard extends React.Component{
                 }
             </div>
         );
-    }
+    };
 
 }
 
