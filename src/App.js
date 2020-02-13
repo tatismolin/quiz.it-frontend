@@ -15,6 +15,7 @@ class App extends Component{
 
   componentDidMount(){
     fetch("http://[::1]:3000/users")
+    // fetch("https://my-quiz-it.herokuapp.com/users")
       .then(response => response.json())
       .then(user => {
         const cards = user[0].dashboards.map(dashboard => {
@@ -52,6 +53,7 @@ class App extends Component{
     });
     
     fetch("http://localhost:3000/dashboards", {
+    // fetch("https://my-quiz-it.herokuapp.com/dashboards", {
       method: "POST",
       headers: {
           "Content-Type": "application/json",
@@ -71,6 +73,7 @@ class App extends Component{
     this.setState({dashboards: newDashboardsState});
 
     fetch(`http://localhost:3000/dashboards/${deletedDashboard.dashboard_id}`, {
+    // fetch(`https://my-quiz-it.herokuapp.com/dashboards/${deletedDashboard.dashboard_id}`, {
       method: "DELETE"
     });
 };

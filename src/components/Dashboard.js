@@ -38,6 +38,7 @@ class Dashboard extends Component{
         });
         
         fetch("http://localhost:3000/cards", {
+        // fetch("https://my-quiz-it.herokuapp.com/cards", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -57,6 +58,7 @@ class Dashboard extends Component{
         this.setState({cards: newCardsState});
 
         fetch(`http://localhost:3000/cards/${deletedCard.card_id}`, {
+        // fetch(`https://my-quiz-it.herokuapp.com/${deletedCard.card_id}`, {
           method: "DELETE"
         });
     };
@@ -88,9 +90,10 @@ class Dashboard extends Component{
             <div className="dashboard-container">
                 {selectedDashboard
                     ? <span 
-                        className="delete-dashboard" 
-                        onClick={this.handleDelete} 
-                        role="img" 
+                    className="delete-dashboard" 
+                    // onClick={this.handleDelete} 
+                    onClick={() => { if (window.confirm('Are you sure you wish to delete this Dashboard?')) this.handleDelete() }}
+                    role="img" 
                         aria-label="delete button">
 
                             ❌

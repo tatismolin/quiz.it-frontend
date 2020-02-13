@@ -50,7 +50,7 @@ class Card extends Component{
                         <div className="card-buttons">
                             <span 
                                 className="delete-card" 
-                                onClick={this.handleDelete} 
+                                onClick={() => { if (window.confirm('Are you sure you wish to delete this card?')) this.handleDelete() }}
                                 role="img" 
                                 aria-label="delete button">
 
