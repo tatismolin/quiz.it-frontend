@@ -61,6 +61,20 @@ class App extends Component{
     });
   };
 
+  removeDashboard = (deletedDashboard) => {
+    const {dashboards} = this.state;
+    const newDashboardsState = dashboards.filter(dashboard => {
+        return(
+          dashboard.id !== deletedDashboard.dashboard_id
+        );
+    });
+    this.setState({dashboards: newDashboardsState});
+
+    fetch(`http://localhost:3000/dashboards/${deletedDashboard.dashboard_id}`, {
+      method: "DELETE"
+    });
+};
+
   render(){
     const {searchTerm, user, dashboards} = this.state;
     return (
@@ -83,6 +97,7 @@ class App extends Component{
           dashboards={dashboards}
           addDashboard={this.addDashboard}
           user_id={user.id} 
+          removeDashboard={this.removeDashboard} 
         />
 
         <footer>

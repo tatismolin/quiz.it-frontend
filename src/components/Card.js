@@ -49,7 +49,7 @@ class Card extends Component{
                     }}>
                         <div className="card-buttons">
                             <span 
-                                className="delete-emoji" 
+                                className="delete-card" 
                                 onClick={this.handleDelete} 
                                 role="img" 
                                 aria-label="delete button">
