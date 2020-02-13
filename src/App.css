@@ -80,10 +80,10 @@ footer {
 
 .dashboard-name {
     font-family: "LCD Solid";
-    font-size: 40px;
+    font-size: 40px; 
     font-weight: 300;
     color: #494947;
-    padding-top: 2rem;
+    padding: 1rem;
     padding-left: 2rem;
     word-wrap: break-word;
     cursor: pointer;
@@ -195,5 +195,41 @@ input {
 
 .add-button:hover, .edit-button:hover {
     background-color: rgb(236, 236, 236);
+}
+
+.dashboard-form-container {
+    /* min-height: 4.5rem; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+}
+
+.dashboard-form-container:hover {
+    background-color: #35FF69;
+}
+
+.dashboard-form-content {
+    display: flex;
+    padding: 1.5rem;
+}
+
+.dashboard-form-input {
+    width: 20%;
+    height: 1rem;
+    align-self: center;
+    margin-left: 1rem;
+}
+
+.dashboard-form-name {
+    font-family: "LCD Solid";
+    font-size: 20px; 
+    color: #494947;
+    padding-left: 1rem;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.dashboard-form-button {
+    cursor: pointer;
+    background-color: #35FF69;
+    border: none;
 }
 
