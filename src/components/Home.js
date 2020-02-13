@@ -2,7 +2,7 @@ import React from "react";
 import Dashboard from "./Dashboard";
 import AddDashboard from "./AddDashboard";
 
-function Home({dashboards, addDashboard, user}){
+function Home({dashboards, addDashboard, removeDashboard, user}){
 
     const sortByName = (a, b) => {
         if(a.name > b.name){
@@ -20,6 +20,8 @@ function Home({dashboards, addDashboard, user}){
                <Dashboard 
                     key={dashboard.id} 
                     dashboard={dashboard}
+                    removeDashboard={removeDashboard} 
+                    dashboard_id={dashboard.id} 
                 />
             );
         });

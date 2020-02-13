@@ -76,11 +76,28 @@ class Dashboard extends Component{
     //     });
     // };
 
+    handleDelete = (event) => {
+        const {removeDashboard, dashboard_id} = this.props;
+        removeDashboard({dashboard_id: dashboard_id});
+    };
+
     render(){
         const {selectedDashboard} = this.state;
         const {dashboard} = this.props;
         return(
             <div className="dashboard-container">
+                {selectedDashboard
+                    ? <span 
+                        className="delete-dashboard" 
+                        onClick={this.handleDelete} 
+                        role="img" 
+                        aria-label="delete button">
+
+                            ❌
+                    </span>
+                    : null
+                }
+
                 <p 
                     onClick={() => this.setState({selectedDashboard: !selectedDashboard})} 
                     className="dashboard-name">{dashboard.name}
@@ -97,6 +114,7 @@ class Dashboard extends Component{
                         </div>
                     : null
                 }
+
             </div>
         );
     };
