@@ -45,6 +45,22 @@ class App extends Component{
       }));
   };
 
+  addDashboard = (dashboard) => {
+    const {dashboards} = this.state;
+    this.setState({
+      dashboards: [...dashboards, dashboard]
+    });
+    
+    fetch("http://localhost:3000/dashboards", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify({dashboard})
+    });
+  };
+
   render(){
     const {searchTerm, user, dashboards} = this.state;
     return (
@@ -65,10 +81,12 @@ class App extends Component{
         <Home 
           user={user} 
           dashboards={dashboards}
+          addDashboard={this.addDashboard}
+          user_id={user.id} 
         />
 
         <footer>
-          <p className="footer-name">Created with 💚 by Me</p>
+          <span className="footer-name" role="img" aria-label="heart">Created with 💚 by Me</span>
         </footer>
       </div>
     );
